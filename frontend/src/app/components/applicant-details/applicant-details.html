@@ -1,0 +1,56 @@
+<div class="container-fluid py-4">
+  <div class="card shadow-sm border-0">
+    <div class="card-header bg-white py-3">
+      <h5 class="fw-bold mb-0">Applicant Management</h5>
+    </div>
+    
+    <div *ngIf="isLoading" class="text-center py-5">
+      <div class="spinner-border text-primary"></div>
+    </div>
+
+    <div class="table-responsive" *ngIf="!isLoading">
+      <table class="table table-hover align-middle mb-0">
+        <thead class="bg-light text-secondary small text-uppercase">
+          <tr>
+            <th class="ps-4">Applicant</th>
+            <th>Role Applied</th>
+            <th>Status</th>
+            <th class="text-end pe-4">Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let app of applicants">
+            <td class="ps-4">
+              <div class="fw-bold">{{ app.jobSeeker?.name }}</div>
+              <div class="text-muted extra-small">{{ app.jobSeeker?.email }}</div>
+            </td>
+            <td>
+              <span class="text-dark">{{ app.job?.title }}</span>
+            </td>
+            <td>
+              <span class="badge rounded-pill px-3 py-2" 
+                    [ngClass]="{
+                      'bg-warning text-dark': app.status === 'APPLIED' || app.status === 'UNDER_REVIEW',
+                      'bg-success': app.status === 'SHORTLISTED',
+                      'bg-danger': app.status === 'REJECTED',
+                      'bg-secondary': app.status === 'WITHDRAWN'
+                    }">
+                {{ app.status }}
+              </span>
+            </td>
+            <td class="text-end pe-4">
+              <button class="btn btn-sm btn-outline-primary me-2" (click)="downloadResume(app.jobSeeker.id)">
+                <i class="fas fa-download"></i> Resume
+              </button>
+              
+              <div class="btn-group" *ngIf="app.status !== 'WITHDRAWN'">
+                <button class="btn btn-sm btn-success" (click)="updateStatus(app.id, 'SHORTLISTED')">Shortlist</button>
+                <button class="btn btn-sm btn-danger" (click)="updateStatus(app.id, 'REJECTED')">Reject</button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

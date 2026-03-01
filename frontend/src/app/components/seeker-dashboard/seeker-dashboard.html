@@ -1,0 +1,28 @@
+<div class="row g-4" *ngIf="!isLoading; else loading">
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm bg-primary text-white p-4">
+      <h5 class="opacity-75">Applied Jobs</h5>
+      <h2 class="fw-bold mb-0">{{ appliedCount }}</h2>
+    </div>
+  </div>
+  
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm bg-success text-white p-4">
+      <h5 class="opacity-75">Shortlisted</h5>
+      <h2 class="fw-bold mb-0">{{ shortlistedCount }}</h2>
+    </div>
+  </div>
+  
+  <div class="col-md-4">
+    <div class="card border-0 shadow-sm bg-info text-white p-4">
+      <h5 class="opacity-75">Saved Jobs</h5>
+      <h2 class="fw-bold mb-0">{{ savedCount }}</h2>
+    </div>
+  </div>
+</div>
+
+<ng-template #loading>
+  <div class="text-center py-5">
+    <div class="spinner-border text-primary"></div>
+  </div>
+</ng-template>

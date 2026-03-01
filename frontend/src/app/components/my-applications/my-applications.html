@@ -1,0 +1,51 @@
+<div class="container py-5">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="fw-bold">My Applications</h3>
+    <span class="badge bg-primary px-3 py-2">{{ applications.length }} Total</span>
+  </div>
+
+  <div *ngIf="isLoading" class="text-center py-5">
+    <div class="spinner-border text-primary" role="status"></div>
+    <p class="mt-2 text-muted">Fetching your applications...</p>
+  </div>
+
+  <div class="row" *ngIf="!isLoading">
+    <div class="col-12 mb-3" *ngFor="let app of applications">
+      <div class="card shadow-sm border-0">
+        <div class="card-body p-4">
+          <div class="row align-items-center">
+            <div class="col-md-7">
+              <h5 class="fw-bold text-dark mb-1">{{ app.job?.title }}</h5>
+              <p class="text-primary mb-2">{{ app.job?.companyName }}</p>
+              <div class="text-muted small">
+                <i class="fas fa-map-marker-alt me-1"></i> {{ app.job?.location }} | 
+                <i class="fas fa-clock ms-2 me-1"></i> Applied: {{ app.appliedAt | date:'mediumDate' }}
+              </div>
+            </div>
+            
+            <div class="col-md-5 text-md-end mt-3 mt-md-0">
+              <span class="badge rounded-pill px-4 py-2 mb-2 d-inline-block" 
+                    [ngClass]="getStatusClass(app.status)">
+                {{ app.status }}
+              </span>
+              <button *ngIf="app.status === 'PENDING'" 
+          (click)="withdrawApplication(app.id)" 
+          class="btn btn-sm btn-outline-danger mt-2">
+    <i class="fas fa-times me-1"></i> Withdraw
+  </button>
+              <div class="small text-muted" *ngIf="app.coverLetter">
+                <i class="fas fa-file-alt me-1"></i> Cover Letter Included
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 text-center py-5" *ngIf="applications.length === 0">
+      <img src="https://cdn-icons-png.flaticon.com/512/7486/7486744.png" style="width: 120px; opacity: 0.4;">
+      <h5 class="mt-4 text-muted">You haven't applied to any jobs yet.</h5>
+      <a routerLink="/jobseeker/menu/search" class="btn btn-primary mt-3">Browse Jobs</a>
+    </div>
+  </div>
+</div>

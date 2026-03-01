@@ -1,0 +1,32 @@
+<div class="container mt-5" style="max-width:450px">
+  <h3 class="text-center mb-4">RevHire Register</h3>
+  
+
+  <form (ngSubmit)="register()">
+
+    <div class="mb-3">
+      <label>User Name</label>
+      <input type="text" class="form-control" [(ngModel)]="registerData.username" name="username" required>
+    </div>
+
+
+    <div class="mb-3">
+      <label>Password</label>
+      <input type="password" class="form-control" [(ngModel)]="registerData.password" name="password" required>
+    </div>
+
+    <div class="mb-3">
+      <label>Register As</label>
+      <select class="form-select" [(ngModel)]="registerData.role" name="role">
+        <option value="JOBSEEKER">Job Seeker</option>
+        <option value="EMPLOYER">Employer</option>
+      </select>
+    </div>
+
+    <button class="btn btn-success w-100">Register</button>
+  </form>
+
+  <p class="text-center mt-3">
+    Already have account? <a routerLink="/login">Login</a>
+  </p>
+</div>

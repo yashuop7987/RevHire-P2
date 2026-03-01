@@ -1,0 +1,54 @@
+<div class="container py-4">
+  <div class="card shadow border-0">
+    <div class="card-header bg-primary text-white py-3">
+      <h4 class="mb-0">{{ isNewUser ? 'Create Your Profile' : 'Edit Your Profile' }}</h4>
+    </div>
+
+
+
+    <div class="card-body p-4">
+      <div *ngIf="isLoading" class="text-center py-5">
+        <div class="spinner-border text-primary"></div>
+      </div>
+
+      <form [formGroup]="profileForm" (ngSubmit)="onSubmit()" *ngIf="!isLoading">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Full Name</label>
+            <input type="text" formControlName="fullName" class="form-control" placeholder="Enter full name">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Email (Account ID)</label>
+            <input type="email" formControlName="email" class="form-control">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Phone Number</label>
+            <input type="text" formControlName="phone" class="form-control" placeholder="10-digit mobile">
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Location</label>
+            <input type="text" formControlName="location" class="form-control" placeholder="City, State">
+          </div>
+          <div class="col-md-12">
+            <label class="form-label">Employment Status</label>
+            <select formControlName="employmentStatus" class="form-select">
+              <option value="" disabled>Choose status...</option>
+              <option value="Unemployed">Unemployed</option>
+              <option value="Employed">Employed</option>
+              <option value="Student">Student</option>
+            </select>
+          </div>
+
+          <div class="col-12 mt-4 text-center">
+            <button type="submit" class="btn btn-lg px-5 shadow-sm" 
+                    [ngClass]="isNewUser ? 'btn-success' : 'btn-primary'"
+                    [disabled]="profileForm.invalid">
+              <i class="fas" [ngClass]="isNewUser ? 'fa-plus-circle' : 'fa-save'"></i>
+              {{ isNewUser ? 'Create My Profile' : 'Save Changes' }}
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

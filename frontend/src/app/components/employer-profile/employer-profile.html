@@ -1,0 +1,51 @@
+<div class="profile-wrapper">
+
+  <div class="profile-card">
+
+    <div class="header">
+      <h2>🏢 Employer Profile</h2>
+      <button *ngIf="!editMode" (click)="editMode=true">Edit</button>
+      <button *ngIf="editMode" (click)="saveProfile()">Save</button>
+    </div>
+
+    <div class="form-grid">
+
+      <div class="form-group">
+        <label>Company Name</label>
+        <input [(ngModel)]="employer.companyName" [readonly]="!editMode">
+      </div>
+
+      <div class="form-group">
+        <label>Industry</label>
+        <input [(ngModel)]="employer.industry" [readonly]="!editMode">
+      </div>
+
+      <div class="form-group">
+        <label>Company Size</label>
+        <input [(ngModel)]="employer.companySize" [readonly]="!editMode">
+      </div>
+
+      <div class="form-group">
+        <label>Website</label>
+        <input [(ngModel)]="employer.website" [readonly]="!editMode">
+      </div>
+
+      <div class="form-group">
+        <label>Location</label>
+        <input [(ngModel)]="employer.location" [readonly]="!editMode">
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input [(ngModel)]="employer.email" [readonly]="!editMode">
+      </div>
+
+      <div class="form-group full-width">
+        <label>Company Description</label>
+        <textarea [(ngModel)]="employer.description" [readonly]="!editMode"></textarea>
+      </div>
+
+    </div>
+
+  </div>
+</div>

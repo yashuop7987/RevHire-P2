@@ -1,0 +1,54 @@
+<div class="container py-5">
+  <div class="card shadow-lg border-0">
+    <div class="card-header bg-dark text-white p-4">
+      <h3 class="mb-0"><i class="fas fa-file-alt me-2"></i> Professional Resume Manager</h3>
+      <p class="small mb-0 opacity-75">Build your profile to stand out to employers</p>
+    </div>
+
+    <div class="card-body p-4">
+      <div class="text-center py-5">
+    
+      </div>
+
+      <form [formGroup]="resumeForm" (ngSubmit)="saveResume()">
+        <div class="row">
+          <div class="col-12 mb-4">
+            <label class="form-label fw-bold text-uppercase small text-muted">Career Objective</label>
+            <textarea formControlName="objective" class="form-control" rows="3" placeholder="Briefly describe your career goals..."></textarea>
+          </div>
+
+          <div class="col-md-6 mb-4">
+            <label class="form-label fw-bold text-uppercase small text-muted">Education</label>
+            <textarea formControlName="education" class="form-control" rows="5" placeholder="e.g. B.Tech in CSE - Oriental College (2025)"></textarea>
+          </div>
+
+          <div class="col-md-6 mb-4">
+            <label class="form-label fw-bold text-uppercase small text-muted">Work Experience</label>
+            <textarea formControlName="experience" class="form-control" rows="5" placeholder="Describe your previous roles and responsibilities..."></textarea>
+          </div>
+
+          <div class="col-md-6 mb-4">
+            <label class="form-label fw-bold text-uppercase small text-muted">Technical Skills</label>
+            <textarea formControlName="skills" class="form-control" rows="4" placeholder="Java, Spring Boot, Angular, MySQL..."></textarea>
+          </div>
+
+          <div class="col-md-6 mb-4">
+            <label class="form-label fw-bold text-uppercase small text-muted">Key Projects</label>
+            <textarea formControlName="projects" class="form-control" rows="4" placeholder="Inventory Management System, Job Portal..."></textarea>
+          </div>
+
+          <div class="col-12 mb-4">
+            <label class="form-label fw-bold text-uppercase small text-muted">Certifications</label>
+            <textarea formControlName="certifications" class="form-control" rows="2" placeholder="AWS Certified, Oracle Java Professional..."></textarea>
+          </div>
+        </div>
+
+        <div class="text-center mt-4">
+          <button type="submit" [disabled]="resumeForm.invalid" class="btn btn-primary btn-lg px-5 shadow">
+            <i class="fas fa-save me-2"></i> Save Resume
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

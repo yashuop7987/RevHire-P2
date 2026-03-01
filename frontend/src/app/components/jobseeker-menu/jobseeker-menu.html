@@ -1,0 +1,57 @@
+<div class="d-flex" id="wrapper">
+  <div class="bg-dark text-white border-end" id="sidebar-wrapper">
+    <div class="sidebar-heading border-bottom py-4 px-3 fw-bold fs-4 text-primary">
+      RevHire <span class="text-white">Seeker</span>
+    </div>
+    <div class="list-group list-group-flush mt-3">
+      <a routerLink="/jobseeker/menu/dashboard" 
+     routerLinkActive="active"
+     [routerLinkActiveOptions]="{exact: true}"
+      class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 px-4">
+        <i class="fas fa-th-large me-2"></i> Dashboard
+      </a>
+      <a routerLink="/jobseeker/menu/search" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 px-4">
+        <i class="fas fa-search me-2"></i> Find Jobs
+      </a>
+      <a routerLink="/jobseeker/menu/my-applications" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 px-4">
+        <i class="fas fa-file-signature me-2"></i> My Applications
+      </a>
+      <a routerLink="/jobseeker/menu/notifications" routerLinkActive="active" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 px-4 d-flex justify-content-between align-items-center">
+        <div><i class="fas fa-bell me-2"></i> Notifications</div>
+        <span *ngIf="unreadCount > 0" class="badge rounded-pill bg-danger" style="font-size: 10px;">{{ unreadCount }}</span>
+      </a>
+      <a routerLink="/jobseeker/menu/resume" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 px-4">
+        <i class="fas fa-file-pdf me-2"></i> Resume Manager
+      </a>
+      <a routerLink="/jobseeker/menu/saved-jobs" class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 px-4">
+        <i class="fas fa-heart me-2"></i> Saved Jobs
+      </a>
+      <a routerLink="/jobseeker/menu/profile"
+      routerLinkActive="active"
+      class="list-group-item list-group-item-action bg-dark text-white border-0 py-3 px-4">
+        <i class="fas fa-user-circle me-2"></i> My Profile
+      </a>
+    </div>
+  </div>
+
+  <div id="page-content-wrapper" class="bg-light">
+    
+    <nav class="navbar navbar-expand-lg navbar-white bg-white border-bottom shadow-sm px-4">
+      <div class="container-fluid">
+        <button class="btn btn-light d-md-none"><i class="fas fa-bars"></i></button>
+        <div class="ms-auto d-flex align-items-center">
+          <div class="me-3 position-relative">
+            <i class="fas fa-bell fs-5 text-muted"></i>
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 10px;">3</span>
+          </div>
+          <span class="fw-medium me-3">Hi, {{ userName }}</span>
+          <button (click)="logout()" class="btn btn-outline-danger btn-sm">Logout</button>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container-fluid p-4">
+        <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

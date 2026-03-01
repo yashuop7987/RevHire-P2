@@ -1,0 +1,12 @@
+.extra-small {
+  font-size: 0.7rem;
+}
+
+.btn-link:focus {
+  box-shadow: none;
+}
+
+/* Ensure dropdown doesn't get cut off by screen edge */
+.position-absolute {
+  top: 120%;
+}

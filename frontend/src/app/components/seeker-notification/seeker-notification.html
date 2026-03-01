@@ -1,0 +1,35 @@
+<div class="container py-4">
+  <div class="card shadow-sm border-0">
+    <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+      <h5 class="fw-bold mb-0">Your Notifications</h5>
+      <button *ngIf="unreadCount > 0" class="btn btn-sm btn-outline-primary" (click)="markAllAsRead()">
+        Mark all as read
+      </button>
+    </div>
+
+    <div class="list-group list-group-flush">
+      <div *ngFor="let note of notifications" 
+           class="list-group-item list-group-item-action p-3"
+           [class.bg-light]="!note.isRead">
+        <div class="d-flex w-100 justify-content-between">
+          <h6 class="mb-1 fw-bold" [class.text-primary]="!note.isRead">
+            {{ note.message }}
+          </h6>
+          <small class="text-muted">{{ note.createdAt | date:'medium' }}</small>
+        </div>
+        <p class="mb-1 text-secondary small">Notification ID: #{{ note.id }}</p>
+        
+        <button *ngIf="!note.isRead" 
+                (click)="markAsRead(note.id)" 
+                class="btn btn-sm btn-link p-0 text-decoration-none">
+          Mark as read
+        </button>
+      </div>
+
+      <div *ngIf="notifications.length === 0" class="text-center py-5">
+        <i class="fas fa-bell-slash fs-1 text-muted mb-3"></i>
+        <p class="text-muted">No notifications yet.</p>
+      </div>
+    </div>
+  </div>
+</div>

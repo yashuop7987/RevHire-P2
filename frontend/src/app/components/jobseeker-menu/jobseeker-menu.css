@@ -1,0 +1,45 @@
+#wrapper {
+    overflow-x: hidden;
+    min-height: 100vh;
+}
+
+#sidebar-wrapper {
+    min-height: 100vh;
+    width: 260px;
+    transition: margin .25s ease-out;
+}
+
+/* Add 'cursor: pointer' here */
+.list-group-item {
+    cursor: pointer !important;
+    user-select: none; /* Stops the text from being highlighted on double clicks */
+}
+
+.list-group-item:hover {
+    background-color: #343a40 !important;
+    color: #0d6efd !important;
+    cursor: pointer; /* Ensures the hand icon shows on hover */
+}
+
+/* Your existing active state styles */
+.list-group-item.active {
+    background-color: #0d6efd !important;
+    color: white !important;
+    font-weight: bold;
+    border-left: 4px solid #fff;
+    cursor: default; /* Optional: keeps it as a standard arrow since it's already selected */
+}
+
+.list-group-item.active i {
+    color: white !important;
+}
+
+#page-content-wrapper {
+    flex: 1;
+    background-color: #f8f9fa;
+    min-height: 100vh;
+}
+
+.sidebar-heading {
+    letter-spacing: 1px;
+}
