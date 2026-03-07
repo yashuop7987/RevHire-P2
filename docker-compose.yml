@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+
+  mysql:
+    image: mysql:8.0
+    container_name: revhire-mysql
+    environment:
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: revhire
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost","-u","user","-puser"]
+      interval: 10s
+      timeout: 5s
+      retries: 5  
+
+
+
+  backend:
+    build: ./Backend
+    container_name: revhire-backend
+    ports:
+      - "8080:8080"
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:mysql://mysql:3306/revhire
+      - SPRING_DATASOURCE_USERNAME=user
+      - SPRING_DATASOURCE_PASSWORD=user  
+    depends_on:
+      mysql:
+       condition: service_healthy
+    
+  frontend:
+    build: ./Frontend/job-portal-frontend
+    container_name: revhire-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend  
+
+volumes:
+  mysql-data:

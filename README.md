@@ -125,6 +125,3 @@ Relationships:
 
 ### Clone the Repository
 
-```bash
-git clone https://github.com/your-username/revhire.git
-cd revhire

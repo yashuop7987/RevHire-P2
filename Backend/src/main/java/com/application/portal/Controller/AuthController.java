@@ -21,7 +21,7 @@ import java.util.Collections;
 
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = {"http://localhost:4200","http://localhost","http://localhost:80"})
 public class AuthController {
 
     private UserRepository repo;
